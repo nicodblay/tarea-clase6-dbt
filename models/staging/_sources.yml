@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: raw
+    database: my_db
+    schema: main
+    tables:
+      - name: pokemon
+      - name: onecall
