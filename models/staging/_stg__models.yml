@@ -1,0 +1,82 @@
+version: 2
+
+models:
+  - name: stg_pokemon
+    description: "Modelo de staging de pokemon."
+    columns:
+      - name: pokemon_id
+        description: "Identificador único del pokemon."
+        tests:
+          - unique
+          - not_null
+
+      - name: pokemon_name
+        description: "Nombre del pokemon."
+        tests:
+          - not_null
+
+      - name: height
+        description: "Altura del pokemon."
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              arguments:
+                min_value: 1
+                max_value: 1000
+
+      - name: weight
+        description: "Peso del pokemon."
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              arguments:
+                min_value: 1
+                max_value: 100000
+
+      - name: base_experience
+        description: "Experiencia base del pokemon."
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              arguments:
+                min_value: 0
+                max_value: 10000
+
+      - name: types
+        description: "Estructura JSON con los tipos del pokemon."
+
+      - name: loaded_at
+        description: "Fecha de extracción del registro."
+
+  - name: stg_weather
+    description: "Modelo de staging de weather."
+    columns:
+      - name: lat
+        description: "Latitud."
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              arguments:
+                min_value: -90
+                max_value: 90
+
+      - name: lon
+        description: "Longitud."
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              arguments:
+                min_value: -180
+                max_value: 180
+
+      - name: current
+        description: "Bloque con clima actual."
+
+      - name: hourly
+        description: "Bloque con pronóstico por hora."
+
+      - name: daily
+        description: "Bloque con pronóstico diario."
+
+      - name: alerts
+        description: "Bloque con alertas meteorológicas."

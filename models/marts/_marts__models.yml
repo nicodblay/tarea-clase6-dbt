@@ -1,0 +1,59 @@
+version: 2
+
+models:
+  - name: obt_pokemon
+    description: "Modelo final de pokemon para análisis."
+    columns:
+      - name: pokemon_id
+        description: "Identificador único del pokemon."
+        tests:
+          - unique
+          - not_null
+
+      - name: pokemon_name
+        description: "Nombre del pokemon."
+        tests:
+          - not_null
+
+      - name: height
+        description: "Altura del pokemon."
+
+      - name: weight
+        description: "Peso del pokemon."
+
+      - name: base_experience
+        description: "Experiencia base del pokemon."
+
+      - name: type_primary
+        description: "Tipo principal del pokemon."
+
+      - name: type_secondary
+        description: "Tipo secundario del pokemon."
+
+      - name: power_tier
+        description: "Clasificación del pokemon según base_experience."
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['Legendary', 'Strong', 'Normal']
+
+  - name: obt_weather
+    description: "Modelo final de weather para análisis."
+    columns:
+      - name: lat
+        description: "Latitud."
+
+      - name: lon
+        description: "Longitud."
+
+      - name: current
+        description: "Bloque con clima actual."
+
+      - name: hourly
+        description: "Bloque con pronóstico por hora."
+
+      - name: daily
+        description: "Bloque con pronóstico diario."
+
+      - name: alerts
+        description: "Bloque con alertas meteorológicas."

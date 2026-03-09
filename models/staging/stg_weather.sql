@@ -1,5 +1,12 @@
-WITH source AS (
-    SELECT * FROM {{ source('raw', 'onecall') }}
+with source as (
+    select * from {{ source('raw', 'onecall') }}
+),
+
+filtered as (
+    select *
+    from source
+    where lat is not null
+      and lon is not null
 )
 
-SELECT * FROM source
+select * from filtered

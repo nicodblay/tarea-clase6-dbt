@@ -1,0 +1,50 @@
+version: 2
+
+models:
+  - name: int_pokemon_with_types
+    description: "Modelo intermedio que extrae los tipos principal y secundario del pokemon."
+    columns:
+      - name: pokemon_id
+        description: "Identificador único del pokemon."
+        tests:
+          - unique
+          - not_null
+
+      - name: pokemon_name
+        description: "Nombre del pokemon."
+
+      - name: height
+        description: "Altura del pokemon."
+
+      - name: weight
+        description: "Peso del pokemon."
+
+      - name: base_experience
+        description: "Experiencia base del pokemon."
+
+      - name: type_primary
+        description: "Tipo principal del pokemon."
+
+      - name: type_secondary
+        description: "Tipo secundario del pokemon si existe."
+
+  - name: int_weather
+    description: "Modelo intermedio que conserva los datos principales del dataset weather."
+    columns:
+      - name: lat
+        description: "Latitud."
+
+      - name: lon
+        description: "Longitud."
+
+      - name: current
+        description: "Bloque con clima actual."
+
+      - name: hourly
+        description: "Bloque con pronóstico por hora."
+
+      - name: daily
+        description: "Bloque con pronóstico diario."
+
+      - name: alerts
+        description: "Bloque con alertas meteorológicas."
