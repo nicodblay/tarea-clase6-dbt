@@ -36,7 +36,7 @@ models/
 
 
 cat > README.md <<'EOF'
-# Tarea Práctica - Clase 5  
+# Tarea Práctica - Clase 6  
 ## Implementación de proyecto dbt con DuckDB y MotherDuck
 
 Este repositorio contiene el proyecto desarrollado para la tarea práctica de la materia **Introducción a la Ingeniería de Datos**.
